@@ -1,7 +1,6 @@
 import unittest
 from unittest.mock import patch
 
-import pytest
 from sudoku import *
 from sudoku_UI import *
 #ohla
