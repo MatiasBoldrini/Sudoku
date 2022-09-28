@@ -10,3 +10,6 @@ similar-code:
 method-complexity:
     config:
        threshold: 15
+cognitive-complexity:
+    config:
+       threshold: 15
