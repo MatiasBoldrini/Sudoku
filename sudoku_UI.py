@@ -17,7 +17,7 @@ def format_board_ascii(board):
                       * width) * height + '+' + '\n'
         table += (('| ' + '{} ' * width) * height + '|').format(*
                                                                 [format_int.format(x) if x != None and x != 0 else ' ' * cell_length for x in row]) + '\n'
-        if i == size - 1 or i % height == height - 1:
+        if i == 0 or i == size - 1 or i % height == height - 1:
             table += ('+-' + '-' * (cell_length + 1)
                       * width) * height + '+' + '\n'
 
