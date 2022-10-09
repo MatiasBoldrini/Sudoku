@@ -36,7 +36,7 @@ class Sudoku():
         self.check_if_user_won()
 
     def check_if_user_won(self):
-        if not any(0 in x for x in self.board): # check every item != 0
+        if all(0 not in x for x in self.board): # check every item != 0
             raise UserHasWon()
     def check_square(self, number, row, column):
         def find_nearest_subSquare(row1, nearestRow=0):
