@@ -1,9 +1,7 @@
 import unittest
 from unittest.mock import patch
 
-from sudoku import *
-from sudoku_UI import *
-#ohla
+from .sudoku_UI import *
 
 class Test(unittest.TestCase):
 

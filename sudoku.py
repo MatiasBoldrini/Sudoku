@@ -61,3 +61,5 @@ class Sudoku():
         if (row == len(self.board) -1):  # check the last element in column
             return None
         return self.check_column(number, column, row + 1)
+if __name__ == '__main__':
+    sudoku = Sudoku()
