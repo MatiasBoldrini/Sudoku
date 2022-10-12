@@ -1,5 +1,5 @@
 import os
-from .sudoku import *
+from sudoku import *
 
 # IMPORTED FROM https://github.com/jeffsieu/py-sudoku
 
