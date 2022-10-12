@@ -61,5 +61,22 @@ class Sudoku():
         if (row == len(self.board) -1):  # check the last element in column
             return None
         return self.check_column(number, column, row + 1)
+    def __str__(self) -> str:
+        table = ''
+        size = 9
+        width = 3
+        height = 3
+        cell_length = len(str(size))
+        format_int = '{0:0' + str(cell_length) + 'd}'
+        for i, row in enumerate(self.board):
+            if i == 0:
+                table += ('+-' + '-' * (cell_length + 1)
+                        * width) * height + '+' + '\n'
+            table += (('| ' + '{} ' * width) * height + '|').format(*
+                                                                    [format_int.format(x) if x != None and x != 0 else ' ' * cell_length for x in row]) + '\n'
+            if i == size - 1 or i % height == height - 1:
+                table += ('+-' + '-' * (cell_length + 1)
+                        * width) * height + '+' + '\n'
+        return table
 if __name__ == '__main__':
     sudoku = Sudoku()

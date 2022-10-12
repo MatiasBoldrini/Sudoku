@@ -1,35 +1,12 @@
 import os
 from sudoku import *
-
-# IMPORTED FROM https://github.com/jeffsieu/py-sudoku
-
-def format_board_ascii(board):
-    table = ''
-    size = 9
-    width = 3
-    height = 3
-    cell_length = len(str(size))
-    format_int = '{0:0' + str(cell_length) + 'd}'
-    for i, row in enumerate(board):
-        if i == 0:
-            table += ('+-' + '-' * (cell_length + 1)
-                      * width) * height + '+' + '\n'
-        table += (('| ' + '{} ' * width) * height + '|').format(*
-                                                                [format_int.format(x) if x != None and x != 0 else ' ' * cell_length for x in row]) + '\n'
-        if i == size - 1 or i % height == height - 1:
-            table += ('+-' + '-' * (cell_length + 1)
-                      * width) * height + '+' + '\n'
-
-    return table
-# END
-
-
 def mainMenu():
     sudoku = Sudoku()
     while True:
-        line = format_board_ascii(sudoku.board).splitlines()
-        for i in range(len(line)):
-            print('                       ' + line[i])
+        # line = format_board_ascii(sudoku.board).splitlines()
+        # for i in range(len(line)):
+        #     print('                       ' + line[i])
+        print(format_board_ascii(sudoku.board))
         play(sudoku)
 
 
@@ -50,33 +27,6 @@ def play(sudoku):
         sudoku.set_number(number, row, column)
     except UserHasWon:
         print(correctColor + 'You WON ' + colorEnd + '\n')
-    except KeyboardInterrupt:
-        os.system("clear")
-        print(errorColor + """
-              
-               ...
-             ;::::;
-           ;::::; :;
-         ;:::::'   :;
-        ;:::::;     ;.
-       ,:::::'       ;           OOO\
-       ::::::;       ;          OOOOO\
-       ;:::::;       ;         OOOOOOOO
-      ,;::::::;     ;'         / OOOOOOO
-    ;:::::::::`. ,,,;.        /  / DOOOOOO
-  .';:::::::::::::::::;,     /  /     DOOOO
- ,::::::;::::::;;;;::::;,   /  /        DOOO
-;`::::::`'::::::;;;::::: ,#/  /          DOOO
-:`:::::::`;::::::;;::: ;::#  /            DOOO
-::`:::::::`;:::::::: ;::::# /              DOO
-`:`:::::::`;:::::: ;::::::#/               DOO
- :::`:::::::`;; ;:::::::::##                OO
- ::::`:::::::`;::::::::;:::#                OO
- `:::::`::::::::::::;'`:;::#                O
-  `:::::`::::::::;' /  / `:#
-   ::::::`:::::;'  /  /   `#
-              """+ colorEnd)
-        print(errorColor + "Aun no has terminado" + colorEnd)
     except NumberIsInRow:
         print(errorColor + 'The specified number is already in the row' + colorEnd + '\n')
     except NumberIsInColumn:
@@ -96,7 +46,6 @@ def play(sudoku):
 
 
 if __name__ == "__main__":
-    os.system("reset")
     print("""
     \033[92m
               ██████  █    ██ ▓█████▄  ▒█████   ██ ▄█▀ █    ██ 
