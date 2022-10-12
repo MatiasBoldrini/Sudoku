@@ -103,7 +103,6 @@ class Test(unittest.TestCase):
         "| 7 4   |       |       |\n"
         "| 8     |     3 | 1     |\n"
         "+-------+-------+-------+\n")
-        print(self.sudoku)
         self.assertEqual(board, self.sudoku.__str__())
 
 
