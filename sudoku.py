@@ -40,7 +40,14 @@ class Sudoku():
             raise UserHasWon()
     def check_square(self, number, row, column):
         def find_nearest_subSquare(row1, nearestRow=0):
-            # recursively find the nearest row or column from left to right
+            """
+            It finds the nearest subsquare to the given row and column, and then checks if the number is
+            already in that subsquare
+            
+            :param row1: the row of the square we're checking
+            :param nearestRow: the nearest row that is divisible by 3, defaults to 0 (optional)
+            :return: The board is being returned.
+            """
             if row1 < nearestRow + 3:
                 return nearestRow
             return find_nearest_subSquare(row1, nearestRow+3)
@@ -55,13 +62,15 @@ class Sudoku():
         if number in self.board[row]:
             raise NumberIsInRow()
 
-    def check_column(self, number, column, row=0):  # Recursively check columns
+    def check_column(self, number, column, row=0):  
+        # It's checking if the number is in the column.
         if number == self.board[row][column]:
             raise NumberIsInColumn
-        if (row == len(self.board) -1):  # check the last element in column
+        if (row == len(self.board) -1):  
             return None
         return self.check_column(number, column, row + 1)
     def __str__(self) -> str:
+        # print a user-friendly board
         table = ''
         size = 9
         width = 3
