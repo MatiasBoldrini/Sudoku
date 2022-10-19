@@ -1,11 +1,14 @@
 class NumberIsInRow(Exception):
     pass
 
+
 class NumberIsInColumn(Exception):
     pass
 
+
 class InvalidSquareException(Exception):
     pass
+
 
 class UserHasWon(Exception):
     pass
@@ -36,14 +39,15 @@ class Sudoku():
         self.check_if_user_won()
 
     def check_if_user_won(self):
-        if all(0 not in x for x in self.board): # check every item != 0
+        if all(0 not in x for x in self.board):  # check every item != 0
             raise UserHasWon()
+
     def check_square(self, number, row, column):
         def find_nearest_subSquare(row1, nearestRow=0):
             """
             It finds the nearest subsquare to the given row and column, and then checks if the number is
             already in that subsquare
-            
+
             :param row1: the row of the square we're checking
             :param nearestRow: the nearest row that is divisible by 3, defaults to 0 (optional)
             :return: The board is being returned.
@@ -62,13 +66,14 @@ class Sudoku():
         if number in self.board[row]:
             raise NumberIsInRow()
 
-    def check_column(self, number, column, row=0):  
+    def check_column(self, number, column, row=0):
         # It's checking if the number is in the column.
         if number == self.board[row][column]:
             raise NumberIsInColumn
-        if (row == len(self.board) -1):  
+        if (row == len(self.board) - 1):
             return None
         return self.check_column(number, column, row + 1)
+
     def __str__(self) -> str:
         # print a user-friendly board
         table = ''
@@ -80,12 +85,14 @@ class Sudoku():
         for i, row in enumerate(self.board):
             if i == 0:
                 table += ('+-' + '-' * (cell_length + 1)
-                        * width) * height + '+' + '\n'
+                          * width) * height + '+' + '\n'
             table += (('| ' + '{} ' * width) * height + '|').format(*
                                                                     [format_int.format(x) if x != None and x != 0 else ' ' * cell_length for x in row]) + '\n'
             if i == size - 1 or i % height == height - 1:
                 table += ('+-' + '-' * (cell_length + 1)
-                        * width) * height + '+' + '\n'
+                          * width) * height + '+' + '\n'
         return table
-if __name__ == '__main__':
+
+
+if __name__ == '__main__':  # pragma: no cover
     sudoku = Sudoku()

@@ -1,12 +1,15 @@
 import os
+
 from sudoku import *
-def mainMenu():
+
+
+def mainMenu(): # pragma: no cover
     sudoku = Sudoku()
     while True:
         # line = format_board_ascii(sudoku.board).splitlines()
         # for i in range(len(line)):
         #     print('                       ' + line[i])
-        print(format_board_ascii(sudoku.board))
+        print((sudoku))
         play(sudoku)
 
 
@@ -42,10 +45,9 @@ def play(sudoku):
             errorColor + 'Wrong number of row / column. Try again.' + colorEnd + '\n')
     else:
         print(correctColor + 'Well Done' + colorEnd)
-    
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": # pragma: no cover   
     print("""
     \033[92m
               ██████  █    ██ ▓█████▄  ▒█████   ██ ▄█▀ █    ██ 

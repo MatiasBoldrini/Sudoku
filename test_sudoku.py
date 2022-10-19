@@ -58,7 +58,8 @@ class Test(unittest.TestCase):
     def testCase_check_input_2(self, mock_print, mock_inputs):
 
         play(self.sudoku)
-        mock_print.assert_called_with("\x1b[95m Wrong input. Try again.\x1b[0m\n")
+        mock_print.assert_called_with(
+            "\x1b[95m Wrong input. Try again.\x1b[0m\n")
 
         # @patch("builtins.input", side_effect=[10, 1, 0])
         # @patch("builtins.print")
@@ -111,5 +112,5 @@ class Test(unittest.TestCase):
         self.assertEqual(board, self.sudoku.__str__())
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     unittest.main()
